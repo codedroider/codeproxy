@@ -2,39 +2,75 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    
     <title>codeproxy</title>
 </head>
-<body>
+<body bgcolor="#f5f5f5">
 
-    <button id="getBtn">get</button>
+    <table width="100%" height="100%" style="position: absolute; top: 0; left: 0;">
+        <tr>
+            <td align="center" valign="middle">
+                <button id="getBtn" style="padding: 20px 50px; font-size: 1.5rem; font-weight: bold; cursor: pointer;">GET</button>
+            </td>
+        </tr>
+    </table>
+    <center>
+    <iframe 
+      src="https://codedroider.github.io/support-me/buttons?bio" 
+      style="width: 360px; height: 160px; border: none; overflow: hidden; background: transparent;" 
+      scrolling="no" 
+      frameborder="0" 
+      allowtransparency="true">
+      error loading support-me!
+    </iframe>
+        <br>
+    <iframe 
+    src="https://codebanners.neocities.org/1banner?codeproxy" 
+    width="468" 
+    height="80" 
+    style="border: none; overflow: hidden;" 
+    scrolling="no">
+    error loading ad!
+    </iframe>
+    </center>
+    <center>
+    &copy; codedroider <iframe src="https://codedroider.github.io/metrika" 
+        style="width: 80px; height: 15px; border: 0; overflow: hidden; display: inline-block; vertical-align: middle;" 
+        scrolling="no" 
+        frameborder="0">
+    </iframe>
+    </center>
 
     <script>
         const URL = 'https://raw.githubusercontent.com/TheSpeedX/PROXY-List/refs/heads/master/socks5.txt';
 
-let proxies = [];
+        let proxies = [];
 
-async function fetchRandomProxies() {
-  try {
-    const response = await fetch(URL);
-    const text = await response.text();
+        async function fetchRandomProxies() {
+          try {
+            const response = await fetch(URL);
+            const text = await response.text();
 
-    const allProxies = text.split('\n')
-                           .map(line => line.trim())
-                           .filter(line => line.length > 0);
+            const allProxies = text.split('\n')
+                                   .map(line => line.trim())
+                                   .filter(line => line.length > 0);
 
-    const shuffled = allProxies.sort(() => 0.5 - Math.random());
-    
-    proxies = shuffled.slice(0, 5);
+            const shuffled = allProxies.sort(() => 0.5 - Math.random());
+            
+            proxies = shuffled.slice(0, 5);
 
-    return proxies;
-  } catch (error) {
-    console.error('Error: ', error.message);
-  }
-}
+            return proxies;
+          } catch (error) {
+            console.error('Error: ', error.message);
+          }
+        }
 
-fetchRandomProxies().then(() => {
-  console.log('Successful: ', proxies);
-});
+        fetchRandomProxies().then(() => {
+          console.log('Successful: ', proxies);
+        });
     </script>
 
     <script>
