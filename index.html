@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>codeproxy</title>
+</head>
+<body>
+
+    <button id="getBtn">get</button>
+
+    <script src=".js"></script>
+
+    <script>
+        document.getElementById('getBtn').addEventListener('click', async () => {
+            if (typeof fetchRandomProxies === 'function') {
+                await fetchRandomProxies();
+                alert(proxies.join('\n'));
+            } else {
+                console.log('Error: corrupted .js');
+            }
+        });
+    </script>
+
+</body>
+</html>
